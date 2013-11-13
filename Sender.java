@@ -24,6 +24,7 @@ public class Sender {
 			byte[] fileByte = new byte[fileSize];
 			fis.read(fileByte);
 			fis.close();
+			
 			sock = new Socket(InetAddress.getByName(args[0]), Integer.parseInt(args[1]));
 			OutputStream os = sock.getOutputStream();
 			os.write(fileByte, 0, fileSize);
