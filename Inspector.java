@@ -37,7 +37,7 @@ public class Inspector
 			Field f = (Field) e.nextElement();
 			try {
 				if (f.get(obj) != null) {
-					System.out.println("Inspecting Field " + f.getName() + " of Object " + obj);
+					System.out.println("Inspecting Field " + f.getName() + " of Object " + obj.getClass().getName());
 	
 					System.out.println("******************");
 					inspect(f.get(obj), recursive);
@@ -79,11 +79,27 @@ public class Inspector
 		for (Field f : ObjClass.getDeclaredFields()) {
 			try {
 				f.setAccessible(true);
-				System.out.println("Field: " + f.getName() + " = " + f.get(obj));
-				System.out.println("- type: " + f.getType());
-				System.out.println("- modifier: " + Modifier.toString(f.getModifiers()));
-				if(!f.getType().isPrimitive()) {
-					objectsToInspect.addElement( f );
+				if (f.getType().isPrimitive()) {
+					System.out.println("Field: " + f.getName() + " = " + f.get(obj));
+					System.out.println("- type: " + f.getType());
+					System.out.println("- modifier: " + Modifier.toString(f.getModifiers()));
+				} else if (f.getType().isArray()) {
+					System.out.println("Field: " + f.getName() + " (Array)");
+					System.out.println("- type: " + f.getType());
+					System.out.println("- modifier: " + Modifier.toString(f.getModifiers()));
+					int arraySize = Array.getLength(f.get(obj));
+					System.out.println("- size: " + arraySize);
+					if (f.getType().getComponentType().isPrimitive()) {
+						for (int i = 0; i < arraySize; i++) {
+							System.out.println("Value [" + i + "]: " + Array.get(f.get(obj), i));
+						}
+					} else {
+						for (int i = 0; i < arraySize; i++) {
+							inspect(Array.get(f.get(obj), i), true);
+						}
+					}
+				} else {
+					objectsToInspect.addElement(f);
 				}
 			} catch (Exception e) {System.out.println(e);}
 		}

@@ -33,7 +33,7 @@ public class Receiver {
 			Inspector.inspect(obj, true);
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
