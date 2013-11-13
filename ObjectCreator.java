@@ -30,7 +30,7 @@ public class ObjectCreator {
 				makeAppts();
 				break;
 			case 5: 
-				makeAOILL();
+				makeAOIAL();
 				break;
 			default:
 				makeYear();
@@ -106,7 +106,7 @@ public class ObjectCreator {
 	}
 	
 	
-	private void makeAOILL() {
+	private void makeAOIAL() {
 		int int1;
 		int int2;
 		int int3;
@@ -134,7 +134,12 @@ public class ObjectCreator {
 		int8 = scan.nextInt();
 		System.out.println("Enter the ninth integer: ");
 		int9 = scan.nextInt();
-		obj = new ArrayOfIntLL(int1, int2, int3, int4, int5, int6, int7, int8, int9);
+		obj = new ArrayOfIntAL(int1, int2, int3, int4, int5, int6, int7, int8, int9);
+	}
+	
+	
+	public Object getObj() {
+		return obj;
 	}
 	
 }
