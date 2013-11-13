@@ -1,6 +1,13 @@
 public class Appointments {
 	private Date[] appt;
 	
+	public Appointments() {
+		appt = new Date[3];
+		appt[0] = new Date(0, 0, 0);
+		appt[1] = new Date(0, 0, 0);
+		appt[2] = new Date(0, 0, 0);
+	}
+	
 	public Appointments (int yappt1, int mappt1, int dappt1, int yappt2, int mappt2, int dappt2, int yappt3, int mappt3, int dappt3) {
 		appt = new Date[3];
 		appt[0] = new Date(yappt1, mappt1, dappt1);

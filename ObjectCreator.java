@@ -12,7 +12,7 @@ public class ObjectCreator {
 		System.out.println("2. Date (Year, Month and Day fields)");
 		System.out.println("3. ArrayOfInt (array of integers)");
 		System.out.println("4. Appointments (array of Date objects)");
-		System.out.println("5. ArrayOfIntLL (linked list of ArrayOfInts)");
+		System.out.println("5. ArrayOfIntLL (ArrayList of ArrayOfInts)");
 		System.out.println("Please enter your selection (1-5): ");
 		scan = new Scanner(System.in);
 		selection = scan.nextInt();

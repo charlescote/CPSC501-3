@@ -1,3 +1,9 @@
+/*
+Deserialize
+by Charles Cote
+All code from Java Reflection in Action, Ch. 3
+*/
+
 import java.util.*;
 import java.lang.reflect.*;
 import org.jdom2.Document;
@@ -5,7 +11,7 @@ import org.jdom2.Element;
 
 public class Deserialize {
 	
-	public static Object deserializeObject( Document source ) throws Exception
+	public static Object deserialize( Document source ) throws Exception
 	{
 		List objList = source.getRootElement().getChildren();
 		Map table = new HashMap();
@@ -23,6 +29,7 @@ public class Deserialize {
 			Object instance = null;
 			if (!cls.isArray()) {
 				Constructor c = cls.getDeclaredConstructor(null);
+				
 				if (!Modifier.isPublic(c.getModifiers())) {
 					c.setAccessible(true);
 				}
